@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		190248242950A9F10038ED18 /* Int+Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190248232950A9F10038ED18 /* Int+Extenstions.swift */; };
-		190248262950BCD10038ED18 /* TrackHScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190248252950BCD10038ED18 /* TrackHScrollableView.swift */; };
 		1902482D2950C4710038ED18 /* EnterToAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1902482B2950C4710038ED18 /* EnterToAppView.swift */; };
 		1902482E2950C4710038ED18 /* ShowLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1902482C2950C4710038ED18 /* ShowLoginView.swift */; };
 		190248312950C5150038ED18 /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1902482F2950C5150038ED18 /* TrackView.swift */; };
 		190248322950C5150038ED18 /* ArtistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190248302950C5150038ED18 /* ArtistView.swift */; };
+		190248342950CC650038ED18 /* CircleGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190248332950CC650038ED18 /* CircleGroupView.swift */; };
+		190248372950CC7B0038ED18 /* TrackHScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190248352950CC7B0038ED18 /* TrackHScrollableView.swift */; };
+		190248382950CC7B0038ED18 /* StopAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190248362950CC7B0038ED18 /* StopAlarmView.swift */; };
 		191E3A89294DF39A004E57DD /* ShowMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A88294DF39A004E57DD /* ShowMusicView.swift */; };
 		191E3A8C294E075A004E57DD /* ColorNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A8B294E075A004E57DD /* ColorNames.swift */; };
 		191E3A8F294E59AE004E57DD /* SelectSpotifyMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A8E294E59AE004E57DD /* SelectSpotifyMusicView.swift */; };
@@ -20,8 +22,6 @@
 		191E3A94294F3CFF004E57DD /* XCDYouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 191E3A93294F3CFF004E57DD /* XCDYouTubeKit */; };
 		191E3A97294F9829004E57DD /* ListBackgroundModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A96294F9829004E57DD /* ListBackgroundModifier.swift */; };
 		191E3A99294F998A004E57DD /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A98294F998A004E57DD /* NavigationBarModifier.swift */; };
-		191E3A9B294FCA5D004E57DD /* CircleGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A9A294FCA5D004E57DD /* CircleGroupView.swift */; };
-		191E3A9D294FCC57004E57DD /* StopAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A9C294FCC57004E57DD /* StopAlarmView.swift */; };
 		191E3AA029506A2F004E57DD /* AlarmSpotifyGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A9F29506A2F004E57DD /* AlarmSpotifyGridView.swift */; };
 		19503364289574DB00D1C1CF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19503363289574DB00D1C1CF /* LoginView.swift */; };
 		19EF7AF6288BC28E009D0887 /* TopSongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EF7AF5288BC28E009D0887 /* TopSongsView.swift */; };
@@ -43,19 +43,19 @@
 
 /* Begin PBXFileReference section */
 		190248232950A9F10038ED18 /* Int+Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extenstions.swift"; sourceTree = "<group>"; };
-		190248252950BCD10038ED18 /* TrackHScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackHScrollableView.swift; sourceTree = "<group>"; };
 		1902482B2950C4710038ED18 /* EnterToAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterToAppView.swift; sourceTree = "<group>"; };
 		1902482C2950C4710038ED18 /* ShowLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowLoginView.swift; sourceTree = "<group>"; };
 		1902482F2950C5150038ED18 /* TrackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
 		190248302950C5150038ED18 /* ArtistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistView.swift; sourceTree = "<group>"; };
+		190248332950CC650038ED18 /* CircleGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleGroupView.swift; sourceTree = "<group>"; };
+		190248352950CC7B0038ED18 /* TrackHScrollableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackHScrollableView.swift; sourceTree = "<group>"; };
+		190248362950CC7B0038ED18 /* StopAlarmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopAlarmView.swift; sourceTree = "<group>"; };
 		191E3A88294DF39A004E57DD /* ShowMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMusicView.swift; sourceTree = "<group>"; };
 		191E3A8B294E075A004E57DD /* ColorNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorNames.swift; sourceTree = "<group>"; };
 		191E3A8E294E59AE004E57DD /* SelectSpotifyMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSpotifyMusicView.swift; sourceTree = "<group>"; };
 		191E3A90294F3BDA004E57DD /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		191E3A96294F9829004E57DD /* ListBackgroundModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBackgroundModifier.swift; sourceTree = "<group>"; };
 		191E3A98294F998A004E57DD /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
-		191E3A9A294FCA5D004E57DD /* CircleGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleGroupView.swift; sourceTree = "<group>"; };
-		191E3A9C294FCC57004E57DD /* StopAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopAlarmView.swift; sourceTree = "<group>"; };
 		191E3A9F29506A2F004E57DD /* AlarmSpotifyGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSpotifyGridView.swift; sourceTree = "<group>"; };
 		19503363289574DB00D1C1CF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		19EF7AF5288BC28E009D0887 /* TopSongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSongsView.swift; sourceTree = "<group>"; };
@@ -119,12 +119,12 @@
 		191E3A8A294E06F7004E57DD /* Componetns */ = {
 			isa = PBXGroup;
 			children = (
-				19503363289574DB00D1C1CF /* LoginView.swift */,
 				191E3A9E29506A00004E57DD /* GridViews */,
 				19EF7AFE288C44C6009D0887 /* CellViews */,
-				191E3A9A294FCA5D004E57DD /* CircleGroupView.swift */,
-				191E3A9C294FCC57004E57DD /* StopAlarmView.swift */,
-				190248252950BCD10038ED18 /* TrackHScrollableView.swift */,
+				190248362950CC7B0038ED18 /* StopAlarmView.swift */,
+				190248352950CC7B0038ED18 /* TrackHScrollableView.swift */,
+				190248332950CC650038ED18 /* CircleGroupView.swift */,
+				19503363289574DB00D1C1CF /* LoginView.swift */,
 			);
 			path = Componetns;
 			sourceTree = "<group>";
@@ -333,8 +333,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				190248342950CC650038ED18 /* CircleGroupView.swift in Sources */,
 				191E3A99294F998A004E57DD /* NavigationBarModifier.swift in Sources */,
-				191E3A9B294FCA5D004E57DD /* CircleGroupView.swift in Sources */,
 				190248312950C5150038ED18 /* TrackView.swift in Sources */,
 				190248242950A9F10038ED18 /* Int+Extenstions.swift in Sources */,
 				4708130E2515EB6B00794934 /* ImageNames.swift in Sources */,
@@ -353,12 +353,12 @@
 				191E3A91294F3BDA004E57DD /* HelpView.swift in Sources */,
 				4708130A2515EA2800794934 /* Spotify.swift in Sources */,
 				19EF7AF8288BC806009D0887 /* TopArtistsView.swift in Sources */,
+				190248382950CC7B0038ED18 /* StopAlarmView.swift in Sources */,
 				191E3AA029506A2F004E57DD /* AlarmSpotifyGridView.swift in Sources */,
 				470812ED2515E4D700794934 /* Topotify.swift in Sources */,
-				191E3A9D294FCC57004E57DD /* StopAlarmView.swift in Sources */,
 				19F39A24294D0B6600AA4C2B /* AlarmView.swift in Sources */,
-				190248262950BCD10038ED18 /* TrackHScrollableView.swift in Sources */,
 				47B9615025169BEF0069E441 /* SettingsView.swift in Sources */,
+				190248372950CC7B0038ED18 /* TrackHScrollableView.swift in Sources */,
 				191E3A97294F9829004E57DD /* ListBackgroundModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
