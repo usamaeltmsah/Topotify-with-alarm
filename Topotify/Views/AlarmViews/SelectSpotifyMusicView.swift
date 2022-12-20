@@ -14,7 +14,7 @@ import SpotifyExampleContent
 struct SelectSpotifyMusicView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var spotify: Spotify
-    @Binding var selectedTrackName: String
+//    @Binding var selectedTrackName: String
     
     @State private var alert: AlertItem? = nil
     
@@ -35,24 +35,23 @@ struct SelectSpotifyMusicView: View {
 
     var onDismiss: ((_ trackName: String) -> Void)?
     
-//    init(selectedtrackName: String = "") {
-//        self._searchResults = State(initialValue: SearchResult())
-//        self.recentlyPlayed = [Track]()
+    init() {
+        self._searchResults = State(initialValue: SearchResult())
+        self.recentlyPlayed = [Track]()
 //        self.selectedtrackName = selectedtrackName
-//    }
-//
-//    fileprivate init(searchResults: SearchResult, recentPlayed: [Track]) {
-//        self._searchResults = State(initialValue: searchResults)
-//        self._recentlyPlayed = State(initialValue: recentPlayed)
-//        self._topTracks = State(initialValue: recentPlayed)
-//    }
+    }
+
+    fileprivate init(searchResults: SearchResult, recentPlayed: [Track]) {
+        self._searchResults = State(initialValue: searchResults)
+        self._recentlyPlayed = State(initialValue: recentPlayed)
+        self._topTracks = State(initialValue: recentPlayed)
+    }
     
     var body: some View {
         ScrollView {
             VStack {
-                Text(selectedTrackName)
-                TrackHScrollableView(data: recentlyPlayed, title: "Recent Played", selectedTrackName: $selectedTrackName)
-                TrackHScrollableView(data: topTracks, title: "Your Songs", selectedTrackName: $selectedTrackName)
+                TrackHScrollableView(data: recentlyPlayed, title: "Recent Played"/*, selectedTrackName: $selectedTrackName*/)
+                TrackHScrollableView(data: topTracks, title: "Your Songs"/*, selectedTrackName: $selectedTrackName*/)
                 Spacer()
             } //: VStack
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
@@ -88,10 +87,10 @@ struct SelectSpotifyMusicView: View {
                     self.loadTopSongs()
                 }
             } //: onAppear
-            .onChange(of: $selectedTrackName) { newValue in
-                onDismiss?(newValue.wrappedValue)
-                presentationMode.wrappedValue.dismiss()
-            }
+//            .onChange(of: $selectedTrackName) { newValue in
+//                onDismiss?(newValue.wrappedValue)
+//                presentationMode.wrappedValue.dismiss()
+//            }
         } //: ScrollView
         .background(Color(.darkBlueColor))
     }

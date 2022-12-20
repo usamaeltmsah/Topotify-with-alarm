@@ -16,6 +16,12 @@
 		190248372950CC7B0038ED18 /* TrackHScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190248352950CC7B0038ED18 /* TrackHScrollableView.swift */; };
 		190248382950CC7B0038ED18 /* StopAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190248362950CC7B0038ED18 /* StopAlarmView.swift */; };
 		1902483A2951CB910038ED18 /* Binding+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190248392951CB910038ED18 /* Binding+Extensions.swift */; };
+		1902483D2951CD050038ED18 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1902483C2951CD050038ED18 /* Realm */; };
+		1902483F2951CD050038ED18 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1902483E2951CD050038ED18 /* RealmSwift */; };
+		190248412951CFEA0038ED18 /* TrackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190248402951CFEA0038ED18 /* TrackItem.swift */; };
+		190248432951DB200038ED18 /* AlarmTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190248422951DB200038ED18 /* AlarmTrackView.swift */; };
+		19024845295230800038ED18 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19024844295230800038ED18 /* GradientButton.swift */; };
+		1902484B29523ECA0038ED18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1902484A29523ECA0038ED18 /* Assets.xcassets */; };
 		191E3A89294DF39A004E57DD /* ShowMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A88294DF39A004E57DD /* ShowMusicView.swift */; };
 		191E3A8C294E075A004E57DD /* ColorNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A8B294E075A004E57DD /* ColorNames.swift */; };
 		191E3A8F294E59AE004E57DD /* SelectSpotifyMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A8E294E59AE004E57DD /* SelectSpotifyMusicView.swift */; };
@@ -52,6 +58,10 @@
 		190248352950CC7B0038ED18 /* TrackHScrollableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackHScrollableView.swift; sourceTree = "<group>"; };
 		190248362950CC7B0038ED18 /* StopAlarmView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopAlarmView.swift; sourceTree = "<group>"; };
 		190248392951CB910038ED18 /* Binding+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extensions.swift"; sourceTree = "<group>"; };
+		190248402951CFEA0038ED18 /* TrackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackItem.swift; sourceTree = "<group>"; };
+		190248422951DB200038ED18 /* AlarmTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTrackView.swift; sourceTree = "<group>"; };
+		19024844295230800038ED18 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		1902484A29523ECA0038ED18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		191E3A88294DF39A004E57DD /* ShowMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMusicView.swift; sourceTree = "<group>"; };
 		191E3A8B294E075A004E57DD /* ColorNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorNames.swift; sourceTree = "<group>"; };
 		191E3A8E294E59AE004E57DD /* SelectSpotifyMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSpotifyMusicView.swift; sourceTree = "<group>"; };
@@ -84,6 +94,8 @@
 			files = (
 				470813032515E8A200794934 /* KeychainAccess in Frameworks */,
 				47A93562261A808600134BC3 /* SpotifyAPI in Frameworks */,
+				1902483D2951CD050038ED18 /* Realm in Frameworks */,
+				1902483F2951CD050038ED18 /* RealmSwift in Frameworks */,
 				191E3A94294F3CFF004E57DD /* XCDYouTubeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,6 +141,7 @@
 				190248352950CC7B0038ED18 /* TrackHScrollableView.swift */,
 				190248332950CC650038ED18 /* CircleGroupView.swift */,
 				19503363289574DB00D1C1CF /* LoginView.swift */,
+				19024844295230800038ED18 /* GradientButton.swift */,
 			);
 			path = Componetns;
 			sourceTree = "<group>";
@@ -174,6 +187,7 @@
 			children = (
 				190248302950C5150038ED18 /* ArtistView.swift */,
 				1902482F2950C5150038ED18 /* TrackView.swift */,
+				190248422951DB200038ED18 /* AlarmTrackView.swift */,
 			);
 			path = CellViews;
 			sourceTree = "<group>";
@@ -198,8 +212,8 @@
 		470812EB2515E4D700794934 /* Topotify */ = {
 			isa = PBXGroup;
 			children = (
-				190248222950A9DF0038ED18 /* Extentions */,
 				470812EC2515E4D700794934 /* Topotify.swift */,
+				190248222950A9DF0038ED18 /* Extentions */,
 				470813112515EB8000794934 /* Model */,
 				470813082515E9F500794934 /* Views */,
 				4708130C2515EB6200794934 /* Project Utilities */,
@@ -233,6 +247,7 @@
 		4708130C2515EB6200794934 /* Project Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				1902484A29523ECA0038ED18 /* Assets.xcassets */,
 				470812F52515E4DA00794934 /* Info.plist */,
 				4708130D2515EB6B00794934 /* ImageNames.swift */,
 				47AAFC4225A0098900DC1A02 /* AlertItem.swift */,
@@ -246,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				470813092515EA2800794934 /* Spotify.swift */,
+				190248402951CFEA0038ED18 /* TrackItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -277,6 +293,8 @@
 				470813022515E8A200794934 /* KeychainAccess */,
 				47A93561261A808600134BC3 /* SpotifyAPI */,
 				191E3A93294F3CFF004E57DD /* XCDYouTubeKit */,
+				1902483C2951CD050038ED18 /* Realm */,
+				1902483E2951CD050038ED18 /* RealmSwift */,
 			);
 			productName = SpotifyAPIExampleApp;
 			productReference = 470812E92515E4D700794934 /* Topotify.app */;
@@ -309,6 +327,7 @@
 				470813012515E8A200794934 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				47A9355E261A808600134BC3 /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
 				191E3A92294F3CFF004E57DD /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */,
+				1902483B2951CD040038ED18 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 470812EA2515E4D700794934 /* Products */;
 			projectDirPath = "";
@@ -325,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				470812F42515E4DA00794934 /* Preview Assets.xcassets in Resources */,
+				1902484B29523ECA0038ED18 /* Assets.xcassets in Resources */,
 				470812F12515E4DA00794934 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +363,7 @@
 				4708130E2515EB6B00794934 /* ImageNames.swift in Sources */,
 				191E3A8F294E59AE004E57DD /* SelectSpotifyMusicView.swift in Sources */,
 				190248322950C5150038ED18 /* ArtistView.swift in Sources */,
+				19024845295230800038ED18 /* GradientButton.swift in Sources */,
 				19EF7AF6288BC28E009D0887 /* TopSongsView.swift in Sources */,
 				1902482E2950C4710038ED18 /* ShowLoginView.swift in Sources */,
 				47363AEB26112991007EEF6A /* RecentlyPlayedView.swift in Sources */,
@@ -353,10 +374,12 @@
 				47AAFC4325A0098900DC1A02 /* AlertItem.swift in Sources */,
 				47C332A7251688D9009ED5CA /* MiscellaneousUtilities.swift in Sources */,
 				1902482D2950C4710038ED18 /* EnterToAppView.swift in Sources */,
+				190248412951CFEA0038ED18 /* TrackItem.swift in Sources */,
 				1902483A2951CB910038ED18 /* Binding+Extensions.swift in Sources */,
 				191E3A91294F3BDA004E57DD /* HelpView.swift in Sources */,
 				4708130A2515EA2800794934 /* Spotify.swift in Sources */,
 				19EF7AF8288BC806009D0887 /* TopArtistsView.swift in Sources */,
+				190248432951DB200038ED18 /* AlarmTrackView.swift in Sources */,
 				190248382950CC7B0038ED18 /* StopAlarmView.swift in Sources */,
 				191E3AA029506A2F004E57DD /* AlarmSpotifyGridView.swift in Sources */,
 				470812ED2515E4D700794934 /* Topotify.swift in Sources */,
@@ -579,6 +602,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1902483B2951CD040038ED18 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		191E3A92294F3CFF004E57DD /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/0xced/XCDYouTubeKit.git";
@@ -606,6 +637,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1902483C2951CD050038ED18 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1902483B2951CD040038ED18 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		1902483E2951CD050038ED18 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1902483B2951CD040038ED18 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		191E3A93294F3CFF004E57DD /* XCDYouTubeKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 191E3A92294F3CFF004E57DD /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */;

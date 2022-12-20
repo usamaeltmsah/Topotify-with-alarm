@@ -48,11 +48,7 @@ struct AlarmView: View {
                         hapticImpact.impactOccurred()
                         showChooseMusicView.toggle()
                     } label: {
-                        Text("Start")
-                            .font(.title2)
-                            .frame(width: 180, height: 50, alignment: .center)
-                            .background(LinearGradient(colors: [Color(.lightOrangeColor), Color(.darkOrangeColor)], startPoint: .topLeading, endPoint: .bottomTrailing))
-                            .cornerRadius(25)
+                        GradientButton(text: "Start")
                     } //: Label
                     .shadow(color: .white, radius: 35, x: 0, y: 0)
                     .sheet(isPresented: $showChooseMusicView) {
