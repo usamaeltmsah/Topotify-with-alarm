@@ -11,9 +11,10 @@ import Combine
 import SpotifyWebAPI
 import SpotifyExampleContent
 
-
 struct SelectSpotifyMusicView: View {
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var spotify: Spotify
+    @Binding var selectedTrackName: String
     
     @State private var alert: AlertItem? = nil
     
@@ -30,23 +31,28 @@ struct SelectSpotifyMusicView: View {
     
     @State private var loadRecentlyPlayedCancellable: AnyCancellable? = nil
     @State private var loadTopSongsCancellable: AnyCancellable? = nil
+    @State var showModel = false
+
+    var onDismiss: ((_ trackName: String) -> Void)?
     
-    init() {
-        self._searchResults = State(initialValue: SearchResult())
-        self.recentlyPlayed = [Track]()
-    }
-    
-    fileprivate init(searchResults: SearchResult, recentPlayed: [Track]) {
-        self._searchResults = State(initialValue: searchResults)
-        self._recentlyPlayed = State(initialValue: recentPlayed)
-        self._topTracks = State(initialValue: recentPlayed)
-    }
+//    init(selectedtrackName: String = "") {
+//        self._searchResults = State(initialValue: SearchResult())
+//        self.recentlyPlayed = [Track]()
+//        self.selectedtrackName = selectedtrackName
+//    }
+//
+//    fileprivate init(searchResults: SearchResult, recentPlayed: [Track]) {
+//        self._searchResults = State(initialValue: searchResults)
+//        self._recentlyPlayed = State(initialValue: recentPlayed)
+//        self._topTracks = State(initialValue: recentPlayed)
+//    }
     
     var body: some View {
         ScrollView {
             VStack {
-                TrackHScrollableView(data: recentlyPlayed, title: "Recent Played")
-                TrackHScrollableView(data: topTracks, title: "Your Songs")
+                Text(selectedTrackName)
+                TrackHScrollableView(data: recentlyPlayed, title: "Recent Played", selectedTrackName: $selectedTrackName)
+                TrackHScrollableView(data: topTracks, title: "Your Songs", selectedTrackName: $selectedTrackName)
                 Spacer()
             } //: VStack
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
@@ -82,6 +88,10 @@ struct SelectSpotifyMusicView: View {
                     self.loadTopSongs()
                 }
             } //: onAppear
+            .onChange(of: $selectedTrackName) { newValue in
+                onDismiss?(newValue.wrappedValue)
+                presentationMode.wrappedValue.dismiss()
+            }
         } //: ScrollView
         .background(Color(.darkBlueColor))
     }
@@ -158,8 +168,8 @@ struct SelectSpotifyMusicView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach([tracks], id: \.self) { tracks in
             NavigationView {
-                SelectSpotifyMusicView(searchResults: SearchResult(), recentPlayed: tracks)
-                    .listStyle(PlainListStyle())
+//                SelectSpotifyMusicView(searchResults: SearchResult(), recentPlayed: tracks)
+//                    .listStyle(PlainListStyle())
             }
         }
         .environmentObject(Spotify())

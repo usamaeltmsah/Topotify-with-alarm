@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ShowMusicView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     @State private var isEditable: Bool = false
     @State private var isEmpty: Bool = true
     @State private var showSelectMusicView: Bool = false
-    @Environment(\.presentationMode) var presentationMode
+    @State var newAddedTrackName: String = ""
     
     var body: some View {
         GeometryReader { geometry in
@@ -63,7 +65,8 @@ struct ShowMusicView: View {
                             .foregroundColor(isEditable ? .white : .gray)
                         } //: ToolbarItem
                     } //: toolbar
-                    NavigationLink(destination: SelectSpotifyMusicView(), isActive: $showSelectMusicView) {}
+                    NavigationLink(destination: SelectSpotifyMusicView(selectedTrackName: $newAddedTrackName), isActive: $showSelectMusicView) {
+                    }
                 } //: VStack
                 .background(Color(.darkBlueColor))
             } //: NavigationView
@@ -73,6 +76,6 @@ struct ShowMusicView: View {
 
 struct ShowMusicView_Previews: PreviewProvider {
     static var previews: some View {
-        ShowMusicView()
+        ShowMusicView(newAddedTrackName: "")
     }
 }

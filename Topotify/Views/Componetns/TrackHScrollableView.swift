@@ -12,6 +12,9 @@ struct TrackHScrollableView: View {
     let data: Array<Track>
     let title: String
     
+    var onSelected: ((_ trackName: String) -> Void)?
+    @Binding var selectedTrackName: String
+    
     var body: some View {
         if !data.isEmpty {
             VStack(alignment: .leading, spacing: 20) {
@@ -26,8 +29,8 @@ struct TrackHScrollableView: View {
                                 id: \.element.self) { item in
                             AlarmSpotifyGridView(name: item.element.name, details: item.element.artists?.compactMap({$0.name}).joined(separator: ", ") ?? "", spotifyImg: item.element.album?.images?.largest)
                                 .onTapGesture {
-                                    print(item.element.name)
-                                }
+                                    selectedTrackName = item.element.name
+                                    onSelected?(selectedTrackName)                                }
                         }
                     } //: LazyHGrid
                     .frame(height: 200)
@@ -41,7 +44,7 @@ struct TrackHScrollableView: View {
 
 struct TrackHScrollableView_Previews: PreviewProvider {
     static var previews: some View {
-        TrackHScrollableView(data: [.faces, .comeTogether, .reckoner, .odeToViceroy, .because, .theEnd], title: "Recent Played")
+        TrackHScrollableView(data: [.faces, .comeTogether, .reckoner, .odeToViceroy, .because, .theEnd], title: "Recent Played", selectedTrackName: .constant(""))
             .previewLayout(.sizeThatFits)
     }
 }
