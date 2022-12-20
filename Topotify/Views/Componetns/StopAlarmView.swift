@@ -12,6 +12,8 @@ struct StopAlarmView: View {
     @State private var buttonOffset = CGSize.zero
     let buttonWidth: CGFloat = 75
     
+    let feedback = UINotificationFeedbackGenerator()
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -69,6 +71,10 @@ struct StopAlarmView: View {
                         withAnimation(.easeOut(duration: 0.5)) {
                             if (buttonOffset.width <= geometry.size.width - (buttonWidth + 70)) {
                                 buttonOffset = .zero
+                                feedback.notificationOccurred(.error)
+                            } else {
+                                
+                                feedback.notificationOccurred(.error)
                             }
                         }
                     })

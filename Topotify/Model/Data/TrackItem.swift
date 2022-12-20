@@ -13,7 +13,6 @@ class TrackItem: Object, Identifiable {
     @Persisted var name: String
     @Persisted var url: String
     @Persisted var author: String
-    @Persisted var isSelected: Bool
     @Persisted var video: Data?
     @Persisted var audio: Data?
     

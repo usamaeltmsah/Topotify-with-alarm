@@ -11,7 +11,7 @@ import RealmSwift
 struct ShowMusicView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var isEditable: Bool = false
+    @State private var isEditing: Bool = false
     @State private var isEmpty: Bool = true
     @State private var showSelectMusicView: Bool = false
     @AppStorage ("selectedTrackIndex") private var selectedTrackIndex: Int = 0
@@ -34,23 +34,8 @@ struct ShowMusicView: View {
                             Button {
                                 showSelectMusicView.toggle()
                             } label: {
-                                VStack {
-                                    HStack(spacing: 20) {
-                                        Image(systemName: "plus")
-                                            .padding(10)
-                                            .background(Color(.lightBlueColor))
-                                            .clipShape(Circle())
-                                            .foregroundColor(Color(.darkBlueColor))
-                                        
-                                        Text("Add new")
-                                            .foregroundColor(Color(.lightBlueColor))
-                                        
-                                        Spacer()
-                                    } //: HStack
-                                    .font(.bold(.title2)())
-                                } //: VStack
-                                .frame(height: 70)
-//                                .listRowBackground(Color.clear)
+                                AddTrackListButton()
+                                //                                .listRowBackground(Color.clear)
                             } //: label
                         } //: Section
                         .listRowBackground(trackItems.isEmpty ? .clear :  Color(.darkBlueColor))
@@ -78,6 +63,9 @@ struct ShowMusicView: View {
                                 }
                             }
                         })
+                        .onMove { IndexSet, offset in
+                            print(offset)
+                        }
 //                        ForEach(trackItems, id: \.id) { trackItem in
 //                            AlarmTrackView(trackName: trackItem.name, author: trackItem.author, isSelected: false)
 //                        }
@@ -95,11 +83,9 @@ struct ShowMusicView: View {
                         } //: ToolbarItem
                         
                         ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("Edit") {
-                                print("Cancel tapped!")
-                            }
-                            .disabled(!isEditable)
-                            .foregroundColor(isEditable ? .white : .gray)
+                            EditButton()
+                                .disabled(trackItems.isEmpty)
+                                .foregroundColor(trackItems.isEmpty ? .gray : .white)
                         } //: ToolbarItem
                     } //: toolbar
                     NavigationLink(destination: SelectSpotifyMusicView(/*selectedTrackName: $newAddedTrackName*/), isActive: $showSelectMusicView) {
