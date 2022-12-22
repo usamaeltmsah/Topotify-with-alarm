@@ -8,7 +8,7 @@
 import SwiftUI
 import RealmSwift
 
-struct ShowMusicView: View {
+struct ChooseMusicView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State private var isEditing: Bool = false
@@ -91,14 +91,15 @@ struct ShowMusicView: View {
                     NavigationLink(destination: SelectSpotifyMusicView(/*selectedTrackName: $newAddedTrackName*/), isActive: $showSelectMusicView) {
                     }
                     
-                    Button {
-                        hapticImpact.impactOccurred()
-                        showScheduleAlarmView.toggle()
-                    } label: {
-                        GradientButton(text: "Done")
-                    } //: Label
-                    .opacity(trackItems.isEmpty ? 0 : 1)
-                    .padding()
+                    if !trackItems.isEmpty {
+                        Button {
+                            hapticImpact.impactOccurred()
+                            showScheduleAlarmView.toggle()
+                        } label: {
+                            GradientButton(text: "Done")
+                        } //: Label
+                        .padding()
+                    }
                     
                     Spacer()
                 } //: VStack
@@ -116,6 +117,6 @@ struct ShowMusicView: View {
 
 struct ShowMusicView_Previews: PreviewProvider {
     static var previews: some View {
-        ShowMusicView()
+        ChooseMusicView()
     }
 }

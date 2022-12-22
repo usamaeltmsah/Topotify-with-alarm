@@ -44,6 +44,7 @@ struct EnterToAppView: View {
             
         }
         .navigationBarColor(backgroundColor: .clear, titleColor: UIColor(Color.primary))
+        .navigationViewStyle(StackNavigationViewStyle())
         .alert(item: $alert) { alert in
             Alert(title: alert.title, message: alert.message)
         }

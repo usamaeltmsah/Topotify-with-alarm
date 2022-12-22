@@ -35,21 +35,11 @@ struct TrackHScrollableView: View {
                             AlarmSpotifyGridView(name: item.element.name, details: item.element.artists?.compactMap({$0.name}).joined(separator: ", ") ?? "", spotifyImg: item.element.album?.images?.largest)
                                 .onTapGesture {
                                     let selectedTrack = item.element
-                                    let trackItem = TrackItem()
-                                    trackItem.name = selectedTrack.name
-                                    trackItem.author = selectedTrack.artists?.compactMap({$0.name}).joined(separator: ", ") ?? ""
-                                    if let url = selectedTrack.uri {
-                                        trackItem.url = url
+                                    
+                                    if !trackItems.contains(where: {selectedTrack.id == $0.trackId}) {
+                                        save(track: selectedTrack)
                                     }
-                                    
-                                    if !trackItems.contains(trackItem) {
-                                        $trackItems.append(trackItem)
-                                        dismiss()
-                                    }
-                                    
-//                                    selectedTrackName = item.element.name
-//                                    onSelected?(selectedTrackName)
-                                    
+                                    dismiss()
                                 }
                         }
                     } //: LazyHGrid
@@ -57,6 +47,28 @@ struct TrackHScrollableView: View {
                     .padding(.horizontal)
                 }  //: ScrollView
             }
+        }
+    }
+    
+    private func save(track: Track) {
+        let trackItem = TrackItem()
+        trackItem.name = track.name
+        trackItem.author = track.artists?.compactMap({$0.name}).joined(separator: ", ") ?? ""
+        if let id = track.id { trackItem.trackId = id }
+        if let url = track.uri { trackItem.url = url }
+        $trackItems.append(trackItem)
+    }
+    
+    private func update(track: Track) {
+        do {
+            let realm = try Realm()
+            guard let objectToUpdate = realm.object(ofType: TrackItem.self, forPrimaryKey: track.id) else { return }
+            try realm.write {
+                objectToUpdate.name = track.name
+//                objectToUpdate.index = sw
+            }
+        } catch {
+            print(error)
         }
     }
 }
