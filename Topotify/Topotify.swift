@@ -6,7 +6,9 @@ import SpotifyWebAPI
 struct Topotify: App {
 
     @StateObject var spotify = Spotify()
-
+    
+//    let migrator = Migrator()
+    
     init() {
         SpotifyAPILogHandler.bootstrap()
     }
