@@ -31,8 +31,11 @@
 		191E3A99294F998A004E57DD /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A98294F998A004E57DD /* NavigationBarModifier.swift */; };
 		191E3AA029506A2F004E57DD /* AlarmSpotifyGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A9F29506A2F004E57DD /* AlarmSpotifyGridView.swift */; };
 		19503364289574DB00D1C1CF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19503363289574DB00D1C1CF /* LoginView.swift */; };
+		1953A06A2954A94D003754FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1953A0692954A94D003754FC /* AppDelegate.swift */; };
 		19890F1C29525BA000B1D8F1 /* AddTrackListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19890F1B29525BA000B1D8F1 /* AddTrackListButton.swift */; };
 		19890F21295264B500B1D8F1 /* Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19890F20295264B500B1D8F1 /* Migrator.swift */; };
+		19EF2EDB2954BE0400237DB5 /* AlarmActivatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EF2EDA2954BE0400237DB5 /* AlarmActivatedView.swift */; };
+		19EF2EDD2954BEC300237DB5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EF2EDC2954BEC300237DB5 /* Date+Extensions.swift */; };
 		19EF7AF6288BC28E009D0887 /* TopSongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EF7AF5288BC28E009D0887 /* TopSongsView.swift */; };
 		19EF7AF8288BC806009D0887 /* TopArtistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EF7AF7288BC806009D0887 /* TopArtistsView.swift */; };
 		19F39A24294D0B6600AA4C2B /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F39A23294D0B6600AA4C2B /* AlarmView.swift */; };
@@ -71,8 +74,11 @@
 		191E3A98294F998A004E57DD /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		191E3A9F29506A2F004E57DD /* AlarmSpotifyGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSpotifyGridView.swift; sourceTree = "<group>"; };
 		19503363289574DB00D1C1CF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1953A0692954A94D003754FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19890F1B29525BA000B1D8F1 /* AddTrackListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackListButton.swift; sourceTree = "<group>"; };
 		19890F20295264B500B1D8F1 /* Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrator.swift; sourceTree = "<group>"; };
+		19EF2EDA2954BE0400237DB5 /* AlarmActivatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmActivatedView.swift; sourceTree = "<group>"; };
+		19EF2EDC2954BEC300237DB5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		19EF7AF5288BC28E009D0887 /* TopSongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSongsView.swift; sourceTree = "<group>"; };
 		19EF7AF7288BC806009D0887 /* TopArtistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopArtistsView.swift; sourceTree = "<group>"; };
 		19F39A23294D0B6600AA4C2B /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
@@ -110,6 +116,7 @@
 			children = (
 				190248232950A9F10038ED18 /* Int+Extenstions.swift */,
 				190248392951CB910038ED18 /* Binding+Extensions.swift */,
+				19EF2EDC2954BEC300237DB5 /* Date+Extensions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -129,6 +136,7 @@
 				191E3A88294DF39A004E57DD /* ChooseMusicView.swift */,
 				191E3A90294F3BDA004E57DD /* HelpView.swift */,
 				191E3A8E294E59AE004E57DD /* SelectSpotifyMusicView.swift */,
+				19EF2EDA2954BE0400237DB5 /* AlarmActivatedView.swift */,
 			);
 			path = AlarmViews;
 			sourceTree = "<group>";
@@ -264,6 +272,7 @@
 				47C332A6251688D9009ED5CA /* MiscellaneousUtilities.swift */,
 				191E3A8B294E075A004E57DD /* ColorNames.swift */,
 				19890F20295264B500B1D8F1 /* Migrator.swift */,
+				1953A0692954A94D003754FC /* AppDelegate.swift */,
 			);
 			path = "Project Utilities";
 			sourceTree = "<group>";
@@ -378,6 +387,7 @@
 				19890F1C29525BA000B1D8F1 /* AddTrackListButton.swift in Sources */,
 				1902482E2950C4710038ED18 /* ShowLoginView.swift in Sources */,
 				47363AEB26112991007EEF6A /* RecentlyPlayedView.swift in Sources */,
+				19EF2EDB2954BE0400237DB5 /* AlarmActivatedView.swift in Sources */,
 				470812EF2515E4D700794934 /* RootView.swift in Sources */,
 				191E3A8C294E075A004E57DD /* ColorNames.swift in Sources */,
 				19890F21295264B500B1D8F1 /* Migrator.swift in Sources */,
@@ -394,10 +404,12 @@
 				190248432951DB200038ED18 /* AlarmTrackView.swift in Sources */,
 				190248382950CC7B0038ED18 /* StopAlarmView.swift in Sources */,
 				191E3AA029506A2F004E57DD /* AlarmSpotifyGridView.swift in Sources */,
+				19EF2EDD2954BEC300237DB5 /* Date+Extensions.swift in Sources */,
 				470812ED2515E4D700794934 /* Topotify.swift in Sources */,
 				19F39A24294D0B6600AA4C2B /* AlarmView.swift in Sources */,
 				47B9615025169BEF0069E441 /* SettingsView.swift in Sources */,
 				190248372950CC7B0038ED18 /* TrackHScrollableView.swift in Sources */,
+				1953A06A2954A94D003754FC /* AppDelegate.swift in Sources */,
 				191E3A97294F9829004E57DD /* ListBackgroundModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -52,7 +52,7 @@ struct AlarmView: View {
                     } //: Label
                     .shadow(color: .white, radius: 35, x: 0, y: 0)
                     .sheet(isPresented: $showChooseMusicView) {
-                        ChooseMusicView()
+                        ChooseMusicView(alarmTime: $time)
                     }
                     Spacer()
                     Spacer()

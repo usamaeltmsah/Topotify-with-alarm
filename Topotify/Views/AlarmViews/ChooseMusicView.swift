@@ -6,17 +6,19 @@
 //
 
 import SwiftUI
+import UserNotifications
 import RealmSwift
 
 struct ChooseMusicView: View {
     @Environment(\.presentationMode) var presentationMode
-    
     @State private var isEditing: Bool = false
     @State private var isEmpty: Bool = true
     @State private var showSelectMusicView: Bool = false
+    @State private var showAlarmActivatedView: Bool = false
     @AppStorage ("selectedTrackIndex") private var selectedTrackIndex: Int = 0
-//    @State var newAddedTrackName: String = ""
+    @State var selectedTrackName: String = ""
     @State private var showScheduleAlarmView: Bool = false
+    @Binding var alarmTime: Date
     
     var hapticImpact = UIImpactFeedbackGenerator(style: .heavy)
     
@@ -39,7 +41,7 @@ struct ChooseMusicView: View {
                             } //: label
                         } //: Section
                         .listRowBackground(trackItems.isEmpty ? .clear :  Color(.darkBlueColor))
-                        ForEach(0..<trackItems.reversed().count, id: \.self) { index in
+                        ForEach(0..<trackItems.count, id: \.self) { index in
                             let trackItem = trackItems[index]
                             AlarmTrackView(trackName: trackItem.name, author: trackItem.author, isSelected: .constant(selectedTrackIndex == index))
                                 .tag(trackItem.id)
@@ -66,9 +68,6 @@ struct ChooseMusicView: View {
                         .onMove { IndexSet, offset in
                             print(offset)
                         }
-//                        ForEach(trackItems, id: \.id) { trackItem in
-//                            AlarmTrackView(trackName: trackItem.name, author: trackItem.author, isSelected: false)
-//                        }
                     } //: List
                     .listStyle(.plain)
                     .navigationTitle("Choose Music")
@@ -93,8 +92,13 @@ struct ChooseMusicView: View {
                     
                     if !trackItems.isEmpty {
                         Button {
+                            selectedTrackName = trackItems[selectedTrackIndex].name
                             hapticImpact.impactOccurred()
                             showScheduleAlarmView.toggle()
+                            
+                            scheduleNotification(at: alarmTime, with: selectedTrackName)
+                            
+//                            presentationMode.wrappedValue.dismiss()
                         } label: {
                             GradientButton(text: "Done")
                         } //: Label
@@ -105,18 +109,44 @@ struct ChooseMusicView: View {
                 } //: VStack
                 .background(Color(.darkBlueColor))
             } //: NavigationView
-//            .onChange(of: $newAddedTrackName) { newValue in
-//                let trackItem = TrackItem()
-//                trackItem.name = newValue.wrappedValue
-//
-//                $trackItems.append(trackItem)
-//            }
+            .sheet(isPresented: $showAlarmActivatedView) {
+                AlarmActivatedView(alarmScheduledAt: alarmTime,  trackName: trackItems[selectedTrackIndex].name)
+            }
         } //: GeometryReader
+    }
+    
+    private func scheduleNotification(at: Date, with name: String) {
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                showAlarmActivatedView = true
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+            
+            let content = UNMutableNotificationContent()
+            content.title = "It's \(alarmTime.getFormmatedTime(withA: true))"
+            content.subtitle = "🎵 \(name)"
+            content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: ""))
+            
+            showNotification(at: alarmTime, with: content)
+        }
+    }
+    
+    private func showNotification(at time: Date, with content: UNMutableNotificationContent) {
+        let notificationComponents = Calendar.current.dateComponents([.hour, .minute], from: time)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: notificationComponents, repeats: false)
+        // choose a random identifier
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        // add our notification request
+        UNUserNotificationCenter.current().add(request)
     }
 }
 
 struct ShowMusicView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseMusicView()
+        ChooseMusicView(alarmTime: .constant(.now))
     }
 }
