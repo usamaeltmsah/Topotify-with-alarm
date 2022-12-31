@@ -12,7 +12,7 @@ struct EnterToAppView: View {
     var body: some View {
         TabView {
             NavigationView {
-                AlarmView()
+                AlarmView(isDismissedFromChooseMusicView: false)
             }
             .tabItem {
                 Image(systemName: "alarm.waves.left.and.right")

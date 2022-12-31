@@ -11,8 +11,9 @@ struct StopAlarmView: View {
     
     @State var text: String
     @State var buttonColor: Color
-    
+    @Binding var isSlidding: Bool
     var color: Color = .white
+    @Binding var isDismissedFromChooseMusicView: Bool
     @State private var buttonOffset = CGSize.zero
     let buttonWidth: CGFloat = 75
     
@@ -77,12 +78,13 @@ struct StopAlarmView: View {
                             } else {
                                 buttonOffset = CGSize(width: geometry.size.width - buttonWidth - 35, height: 0)
                                 feedback.notificationOccurred(.error)
+                                isDismissedFromChooseMusicView = false
+                                isSlidding = true
                             }
                         }
                     })
                 )
             }
-//            .padding(10)
             .frame(width: geometry.size.width)
         }
     }
@@ -90,7 +92,7 @@ struct StopAlarmView: View {
 
 struct StopAlarmView_Previews: PreviewProvider {
     static var previews: some View {
-        StopAlarmView(text: "Wake Up", buttonColor: .orange)
+        StopAlarmView(text: "Wake Up", buttonColor: .orange, isSlidding: .constant(false), isDismissedFromChooseMusicView: .constant(false))
             .previewLayout(PreviewLayout.sizeThatFits)
         
     }

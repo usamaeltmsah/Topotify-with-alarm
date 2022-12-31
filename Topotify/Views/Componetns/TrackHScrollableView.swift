@@ -13,11 +13,6 @@ struct TrackHScrollableView: View {
     @Environment(\.dismiss) var dismiss
     let data: Array<Track>
     let title: String
-    
-    var onSelected: ((_ trackName: String) -> Void)?
-//    @Binding var selectedTrackName: String
-    
-    
     @ObservedResults(TrackItem.self) var trackItems
     
     var body: some View {

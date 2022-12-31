@@ -16,10 +16,13 @@ struct ChooseMusicView: View {
     @State private var showSelectMusicView: Bool = false
     @State private var showAlarmActivatedView: Bool = false
     @AppStorage ("selectedTrackIndex") private var selectedTrackIndex: Int = 0
-    @State var selectedTrackName: String = ""
+    @Binding var selectedTrackName: String
     @State private var showScheduleAlarmView: Bool = false
+    @Binding var dismissFromChooseMusicView: Bool
+    
     @Binding var alarmTime: Date
     
+    var onDismiss: ((_ trackName: String) -> Void)?
     var hapticImpact = UIImpactFeedbackGenerator(style: .heavy)
     
     @ObservedResults(TrackItem.self) var trackItems
@@ -94,11 +97,14 @@ struct ChooseMusicView: View {
                         Button {
                             selectedTrackName = trackItems[selectedTrackIndex].name
                             hapticImpact.impactOccurred()
-                            showScheduleAlarmView.toggle()
+//                            showScheduleAlarmView.toggle()
                             
                             scheduleNotification(at: alarmTime, with: selectedTrackName)
                             
-//                            presentationMode.wrappedValue.dismiss()
+                            presentationMode.wrappedValue.dismiss()
+                            onDismiss?(trackItems[selectedTrackIndex].name)
+                            
+                            dismissFromChooseMusicView = true
                         } label: {
                             GradientButton(text: "Done")
                         } //: Label
@@ -109,9 +115,6 @@ struct ChooseMusicView: View {
                 } //: VStack
                 .background(Color(.darkBlueColor))
             } //: NavigationView
-            .sheet(isPresented: $showAlarmActivatedView) {
-                AlarmActivatedView(alarmScheduledAt: alarmTime,  trackName: trackItems[selectedTrackIndex].name)
-            }
         } //: GeometryReader
     }
     
@@ -147,6 +150,6 @@ struct ChooseMusicView: View {
 
 struct ShowMusicView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseMusicView(alarmTime: .constant(.now))
+        ChooseMusicView(selectedTrackName: .constant(""), dismissFromChooseMusicView: .constant(false), alarmTime: .constant(.now))
     }
 }

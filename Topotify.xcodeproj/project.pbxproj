@@ -77,6 +77,7 @@
 		1953A0692954A94D003754FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19890F1B29525BA000B1D8F1 /* AddTrackListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackListButton.swift; sourceTree = "<group>"; };
 		19890F20295264B500B1D8F1 /* Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrator.swift; sourceTree = "<group>"; };
+		19A1080B2956407600FC0588 /* Topotify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Topotify.entitlements; sourceTree = "<group>"; };
 		19EF2EDA2954BE0400237DB5 /* AlarmActivatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmActivatedView.swift; sourceTree = "<group>"; };
 		19EF2EDC2954BEC300237DB5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		19EF7AF5288BC28E009D0887 /* TopSongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSongsView.swift; sourceTree = "<group>"; };
@@ -228,6 +229,7 @@
 		470812EB2515E4D700794934 /* Topotify */ = {
 			isa = PBXGroup;
 			children = (
+				19A1080B2956407600FC0588 /* Topotify.entitlements */,
 				470812EC2515E4D700794934 /* Topotify.swift */,
 				190248222950A9DF0038ED18 /* Extentions */,
 				470813112515EB8000794934 /* Model */,
@@ -552,6 +554,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Topotify/Topotify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Topotify/Preview Content\"";
 				DEVELOPMENT_TEAM = 2DQV4CFN7G;
@@ -579,6 +582,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Topotify/Topotify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Topotify/Preview Content\"";
 				DEVELOPMENT_TEAM = 2DQV4CFN7G;

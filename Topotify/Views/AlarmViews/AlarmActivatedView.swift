@@ -14,6 +14,7 @@ struct AlarmActivatedView: View {
     @State private var remainingTime: String = ""
     @State private var isSlidding: Bool = false
     @State private var isScheduled: Bool = false
+    @Binding var isDismissedFromChooseMusicView: Bool
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -24,12 +25,12 @@ struct AlarmActivatedView: View {
                 .multilineTextAlignment(.center)
                 .padding()
                 .background(.ultraThickMaterial)
-                .foregroundColor(.white)
+                .foregroundColor(Color.white)
                 .cornerRadius(15)
                 .padding()
                 .offset(y: isScheduled ? 0 : -200)
                 .transition(.asymmetric(insertion: .scale, removal: .opacity))
-            
+                    
             Text(currentTime)
                 .font(.system(.largeTitle, design: .rounded).bold())
             
@@ -52,12 +53,12 @@ struct AlarmActivatedView: View {
             
             Spacer()
             
-            StopAlarmView(text: "Stop Alarm", buttonColor: .yellow, color: .white)
+            StopAlarmView(text: "Stop Alarm", buttonColor: .yellow, isSlidding: $isSlidding, color: .white, isDismissedFromChooseMusicView: $isDismissedFromChooseMusicView)
                 .frame(height: 100)
                 .padding()
         }
         .offset(y: isSlidding ? 0 : -1000)
-        .animation(.easeOut(duration: 0.3), value: isSlidding)
+        .animation(.easeInOut(duration: 0.3), value: isSlidding)
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now()+1) {
                 isSlidding = true
@@ -71,7 +72,7 @@ struct AlarmActivatedView: View {
             
             DispatchQueue.main.asyncAfter(deadline: .now()+6) {
                 withAnimation {
-                    isScheduled.toggle()
+                    isScheduled = false
                 }
             }
         }
@@ -88,6 +89,6 @@ struct AlarmActivatedView: View {
 
 struct AlarmActivatedView_Previews: PreviewProvider {
     static var previews: some View {
-        AlarmActivatedView(alarmScheduledAt: Date(), trackName: "Ramadan Kareem")
+        AlarmActivatedView(alarmScheduledAt: Date(), trackName: "Ramadan Kareem", isDismissedFromChooseMusicView: .constant(false))
     }
 }
