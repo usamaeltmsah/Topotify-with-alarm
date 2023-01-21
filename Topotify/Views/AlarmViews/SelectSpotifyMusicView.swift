@@ -14,11 +14,11 @@ import SpotifyExampleContent
 struct SelectSpotifyMusicView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var spotify: Spotify
-//    @Binding var selectedTrackName: String
     
     @State private var alert: AlertItem? = nil
     
     @State private var didRequestFirstPage = false
+    
     
     @State private var searchCancellable: AnyCancellable? = nil
     
@@ -38,7 +38,6 @@ struct SelectSpotifyMusicView: View {
     init() {
         self._searchResults = State(initialValue: SearchResult())
         self.recentlyPlayed = [Track]()
-//        self.selectedtrackName = selectedtrackName
     }
 
     fileprivate init(searchResults: SearchResult, recentPlayed: [Track]) {
@@ -50,11 +49,16 @@ struct SelectSpotifyMusicView: View {
     var body: some View {
         ScrollView {
             VStack {
-                TrackHScrollableView(data: recentlyPlayed, title: "Recent Played"/*, selectedTrackName: $selectedTrackName*/)
-                TrackHScrollableView(data: topTracks, title: "Your Songs"/*, selectedTrackName: $selectedTrackName*/)
+                SearchBarView(searchText: $searchText)
+                if !searchText.isEmpty, let searchTracks = searchResults.tracks?.items {
+                    TrackHScrollableView(data: searchTracks, title: "Search Results")
+                } else {
+                    TrackHScrollableView(data: recentlyPlayed, title: "Recent Played")
+                    TrackHScrollableView(data: topTracks, title: "Your Songs")
+                }
                 Spacer()
             } //: VStack
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+//            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) { // <3>
@@ -73,9 +77,14 @@ struct SelectSpotifyMusicView: View {
             .alert(item: $alert) { alert in
                 Alert(title: alert.title, message: alert.message)
             } //: alert
-            .onSubmit(of: .search) {
-                search(q: searchText)
-            } //: onSubmit
+            .onChange(of: $searchText, perform: { newValue in
+                if !searchText.isEmpty {
+                    search(q: searchText)
+                }
+            })
+//            .onSubmit(of: .search) {
+//                search(q: searchText)
+//            } //: onSubmit
             .onAppear {
                 if ProcessInfo.processInfo.isPreviewing {
                     return
@@ -101,12 +110,11 @@ extension SelectSpotifyMusicView {
         self.searchResults = SearchResult()
         
         self.searchCancellable = self.spotify.api
-            .search(query: q, categories: [.artist, .album, .track, .playlist])
+            .search(query: q, categories: [.track])
             .receive(on: RunLoop.main)
             .sink(
                 receiveCompletion: self.receiveSpotifyDataCompletion(_:),
                 receiveValue: { searchResults in
-//                    let artists = searchResults.artists?.items.map({ $0.name })
                     self.searchResults = searchResults
                 }
             )
