@@ -6,15 +6,25 @@
 //
 
 import SwiftUI
+import UIKit
+import AVKit
 
-struct AVPlayerView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct AVPlayerView: UIViewControllerRepresentable {
+
+    @Binding var videoURL: URL?
+
+    private var player: AVPlayer? {
+        guard let videoURL else { return nil }
+        return AVPlayer(url: videoURL)
     }
-}
 
-struct AVPlayerView_Previews: PreviewProvider {
-    static var previews: some View {
-        AVPlayerView()
+    func updateUIViewController(_ playerController: AVPlayerViewController, context: Context) {
+        playerController.modalPresentationStyle = .fullScreen
+        playerController.player = player
+        playerController.player?.play()
+    }
+
+    func makeUIViewController(context: Context) -> AVPlayerViewController {
+        return AVPlayerViewController()
     }
 }
