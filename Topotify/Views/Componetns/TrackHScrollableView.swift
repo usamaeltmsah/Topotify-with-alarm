@@ -10,7 +10,7 @@ import SpotifyWebAPI
 import RealmSwift
 
 struct TrackHScrollableView: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
     let data: Array<Track>
     let title: String
     @ObservedResults(TrackItem.self) var trackItems
@@ -34,7 +34,7 @@ struct TrackHScrollableView: View {
                                     if !trackItems.contains(where: {selectedTrack.id == $0.trackId}) {
                                         save(track: selectedTrack)
                                     }
-                                    dismiss()
+                                    presentationMode.wrappedValue.dismiss()
                                 }
                         }
                     } //: LazyHGrid

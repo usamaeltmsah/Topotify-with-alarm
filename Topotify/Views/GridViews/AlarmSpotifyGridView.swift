@@ -34,10 +34,10 @@ struct AlarmSpotifyGridView: View {
             image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .overlay {
-                    Color(.black)
-                        .opacity(0.2)
-                }
+//                .overlay {
+//                    Color(.black)
+//                        .opacity(0.2)
+//                }
                 .frame(width: 140, height: 150)
                 .shadow(color: .secondary, radius: 2, x: 0, y: 0)
                 .cornerRadius(10)
@@ -47,7 +47,7 @@ struct AlarmSpotifyGridView: View {
                     .font(.system(size: 15))
                 
                 Text(details)
-                    .font(.system(size: 13).monospaced())
+                    .font(.system(size: 13).smallCaps())
                     .foregroundColor(Color(.lightBlueColor))
             }
             .frame(width: 140, height: 30)
