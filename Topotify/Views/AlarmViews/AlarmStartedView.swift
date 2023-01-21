@@ -36,8 +36,6 @@ struct AlarmStartedView: View {
     var body: some View {
         VStack {
             if isAlarmTriggered {
-                //            if alarmScheduledAt.timeIntervalSinceNow <= 0 {
-                
                 VStack {
                     Spacer()
                     Text(currentTime)
@@ -49,7 +47,6 @@ struct AlarmStartedView: View {
                             .opacity(0.25)
                         
                         VideoPlayer(player: player)
-                        //            AVPlayerView(videoURL: $videoUrl)
                             .frame(width: 300, height: 150)
                             .cornerRadius(30)
                     }
@@ -110,13 +107,15 @@ struct AlarmStartedView: View {
                 playerViewController.player?.automaticallyWaitsToMinimizeStalling = false
                 playerViewController.player?.volume = 1.0
                 self.player = playerViewController.player
-                self.player?.audiovisualBackgroundPlaybackPolicy = .continuesIfPossible
+                if #available(iOS 15.0, *) {
+                    self.player?.audiovisualBackgroundPlaybackPolicy = .continuesIfPossible
+                }
                 AVPlayerViewControllerManager.shared.player = self.player
                 let timer = Timer(timeInterval: alarmScheduledAt.getRemaingTimeFromNow(), repeats: false) { timer in
                     isAlarmTriggered = true
                     self.player?.play()
                 }
-
+                
                 RunLoop.current.add(timer, forMode: .common)
             } else {
                 print(error!.localizedDescription)
@@ -134,6 +133,6 @@ struct AlarmStartedView: View {
 
 struct YoutubePlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        AlarmStartedView(videoId: "YE7VzlLtp-4", alarmScheduledAt: .now, isAlarmTriggered: .constant(false), isDismissedFromChooseMusicView: .constant(false))
+        AlarmStartedView(videoId: "YE7VzlLtp-4", alarmScheduledAt: Date(), isAlarmTriggered: .constant(false), isDismissedFromChooseMusicView: .constant(false))
     }
 }
