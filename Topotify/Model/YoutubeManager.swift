@@ -8,7 +8,7 @@
 import Foundation
 
 struct YoutubeManager {
-    private static let apiKey = "AIzaSyD0DYjvEtRUrJR8wd32U0WW4zHoR_XB8ag"
+    private static let apiKey = API-KEY
     private static let absuluteUrl = "https://www.googleapis.com/youtube/v3/"
     
     static func getYoutubeVideoId(with track: TrackItem) async -> String? {
