@@ -8,7 +8,14 @@
 import Foundation
 
 struct YoutubeManager {
-    private static let apiKey = API-KEY
+    /*
+     // MARK: - To add your Youtube apiKey :-
+     1- Open https://console.cloud.google.com/apis/credentials?project=bionic-slate-374719 then press " CREATE CREDENTIALS" and select API KEY (First one). Take this key copy and assign it to the apiKey variable
+     2- Open https://console.cloud.google.com/apis/api/youtube.googleapis.com/metrics?project=bionic-slate-374719&authuser=1&supportedpurview=project
+     and enable "YouTube Data API v3"
+     */
+    
+    private static let apiKey = "AIzaSyD0DYjvEtRUrJR8wd32U0WW4zHoR_XB8ag"
     private static let absuluteUrl = "https://www.googleapis.com/youtube/v3/"
     
     static func getYoutubeVideoId(with track: TrackItem) async -> String? {
