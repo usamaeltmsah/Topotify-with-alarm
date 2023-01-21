@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StopAlarmView: View {
+struct SliderButton: View {
     
     @State var text: String
     @State var buttonColor: Color
@@ -30,7 +30,7 @@ struct StopAlarmView: View {
                     .frame(height: 85)
                     .padding(10)
                 
-                Text("Stop Alarm")
+                Text(text)
                     .font(.system(size: 30, design: .rounded))
                     .fontWeight(.bold)
                     .foregroundColor(buttonColor)
@@ -40,7 +40,7 @@ struct StopAlarmView: View {
                     Capsule()
                         .fill(buttonColor)
                         .frame(width: buttonWidth + buttonOffset.width, height: buttonWidth)
-                        .padding()
+                        .padding(15)
                     
                     Spacer()
                 }
@@ -66,17 +66,18 @@ struct StopAlarmView: View {
                 .offset(x: buttonOffset.width)
                 .gesture(DragGesture()
                     .onChanged({ gesture in
-                        if (gesture.translation.width <= geometry.size.width - (buttonWidth + 60) && gesture.translation.width >= 0) {
+                        if (gesture.translation.width <= (geometry.size.width - buttonWidth / 2 - 80) && gesture.translation.width >= 0) {
                             buttonOffset = gesture.translation
                         }
                     })
                     .onEnded({ _ in
                         withAnimation(.easeOut(duration: 0.5)) {
-                            if (buttonOffset.width <= geometry.size.width / 2 - (buttonWidth)) {
+                            if (buttonOffset.width <= geometry.size.width - buttonWidth / 2 - 100) {
                                 buttonOffset = .zero
                                 feedback.notificationOccurred(.success)
                             } else {
-                                buttonOffset = CGSize(width: geometry.size.width - buttonWidth - 35, height: 0)
+//                                buttonOffset = CGSize(width: geometry.size.width - buttonWidth - 80, height: 0)
+                                UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
                                 feedback.notificationOccurred(.error)
                                 isDismissedFromChooseMusicView = false
                                 isSlidding = true
@@ -92,7 +93,7 @@ struct StopAlarmView: View {
 
 struct StopAlarmView_Previews: PreviewProvider {
     static var previews: some View {
-        StopAlarmView(text: "Wake Up", buttonColor: .orange, isSlidding: .constant(false), isDismissedFromChooseMusicView: .constant(false))
+        SliderButton(text: "Wake Up", buttonColor: .orange, isSlidding: .constant(false), isDismissedFromChooseMusicView: .constant(false))
             .previewLayout(PreviewLayout.sizeThatFits)
         
     }

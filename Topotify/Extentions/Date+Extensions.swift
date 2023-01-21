@@ -10,13 +10,22 @@ import Foundation
 extension Date {
     func getFormmatedTime(withA: Bool=false) -> String {
         let dateFormmater = DateFormatter()
-        dateFormmater.dateFormat = "h:mm \(withA ? "a" : "")"
+        dateFormmater.dateFormat = "hh : mm \(withA ? "a" : "")"
+        dateFormmater.locale = Locale(identifier: "en_us")
+        
+        return dateFormmater.string(from: self)
+    }
+    
+    func getFormmatedDate() -> String {
+        let dateFormmater = DateFormatter()
+        dateFormmater.dateFormat = "EEEE, d MMMM"
+        dateFormmater.locale = Locale(identifier: "en_us")
         
         return dateFormmater.string(from: self)
     }
     
     func getRemaingTimeFromNow() -> TimeInterval {
-        if self > .now {
+        if self > Date() {
             return self.timeIntervalSinceNow
         } else {
             return self.addingTimeInterval(24 * 60 * 60).timeIntervalSinceNow
@@ -30,12 +39,12 @@ extension Date {
         let seconds = Int(remaingTime) % 60
                 
         if hours > 0 {
-            return "\(hours)h \(minutes)m"
+            return String(format: "%.2ih %.2im", hours, minutes)
         } else if minutes > 0 {
-            return "\(minutes)m \(seconds)s"
+            return String(format: "%.2im %.2is", minutes, seconds)
         }
         
-        return "\(seconds)s"
+        return String(format: "%.2is", seconds)
     }
     
     static func - (lhs: Date, rhs: Date) -> TimeInterval {
