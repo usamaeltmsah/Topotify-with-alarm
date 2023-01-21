@@ -1,5 +1,5 @@
 //
-//  ShowMusicView.swift
+//  ChooseMusicView.swift
 //  Topotify
 //
 //  Created by Usama Fouad on 17/12/2022.
@@ -16,7 +16,7 @@ struct ChooseMusicView: View {
     @State private var showSelectMusicView: Bool = false
     @State private var showAlarmActivatedView: Bool = false
     @AppStorage ("selectedTrackIndex") private var selectedTrackIndex: Int = 0
-    @Binding var selectedTrackName: String
+    @Binding var selectedTrack: TrackItem
     @State private var showScheduleAlarmView: Bool = false
     @Binding var dismissFromChooseMusicView: Bool
     
@@ -40,7 +40,6 @@ struct ChooseMusicView: View {
                                 showSelectMusicView.toggle()
                             } label: {
                                 AddTrackListButton()
-                                //                                .listRowBackground(Color.clear)
                             } //: label
                         } //: Section
                         .listRowBackground(trackItems.isEmpty ? .clear :  Color(.darkBlueColor))
@@ -50,12 +49,12 @@ struct ChooseMusicView: View {
                                 .tag(trackItem.id)
                                 .listRowInsets(.init(top: 0,leading: 0, bottom: 0, trailing: 0))
                                 .contentShape(Rectangle())
+                                .background(
+                                    selectedTrackIndex == index ? Color(.lightBlueColor).opacity(0.2) : Color.clear
+                                ) //: background
                                 .onTapGesture {
                                     selectedTrackIndex = index
                                 } //: onTapGesture
-                                .background {
-                                    selectedTrackIndex == index ? Color(.lightBlueColor).opacity(0.2) : Color(.darkBlueColor)
-                                } //: background
                         } //: ForEach
                         .onDelete(perform: { indexSet in
                             print(selectedTrackIndex)
@@ -90,16 +89,14 @@ struct ChooseMusicView: View {
                                 .foregroundColor(trackItems.isEmpty ? .gray : .white)
                         } //: ToolbarItem
                     } //: toolbar
-                    NavigationLink(destination: SelectSpotifyMusicView(/*selectedTrackName: $newAddedTrackName*/), isActive: $showSelectMusicView) {
+                    NavigationLink(destination: SelectSpotifyMusicView(), isActive: $showSelectMusicView) {
                     }
                     
                     if !trackItems.isEmpty {
                         Button {
-                            selectedTrackName = trackItems[selectedTrackIndex].name
+                            selectedTrack = trackItems[selectedTrackIndex]
                             hapticImpact.impactOccurred()
-//                            showScheduleAlarmView.toggle()
-                            
-                            scheduleNotification(at: alarmTime, with: selectedTrackName)
+                            scheduleNotification(at: alarmTime, with: selectedTrack)
                             
                             presentationMode.wrappedValue.dismiss()
                             onDismiss?(trackItems[selectedTrackIndex].name)
@@ -113,16 +110,15 @@ struct ChooseMusicView: View {
                     
                     Spacer()
                 } //: VStack
-                .background(Color(.darkBlueColor))
             } //: NavigationView
         } //: GeometryReader
     }
     
-    private func scheduleNotification(at: Date, with name: String) {
+    private func scheduleNotification(at: Date, with track: TrackItem) {
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { success, error in
             if success {
                 showAlarmActivatedView = true
             } else if let error = error {
@@ -131,8 +127,8 @@ struct ChooseMusicView: View {
             
             let content = UNMutableNotificationContent()
             content.title = "It's \(alarmTime.getFormmatedTime(withA: true))"
-            content.subtitle = "🎵 \(name)"
-            content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: ""))
+            content.subtitle = "🎵 \(track.name)"
+            //            content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: ""))
             
             showNotification(at: alarmTime, with: content)
         }
@@ -150,6 +146,6 @@ struct ChooseMusicView: View {
 
 struct ShowMusicView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseMusicView(selectedTrackName: .constant(""), dismissFromChooseMusicView: .constant(false), alarmTime: .constant(.now))
+        ChooseMusicView(selectedTrack: .constant(TrackItem()), dismissFromChooseMusicView: .constant(false), alarmTime: .constant(Date()))
     }
 }
