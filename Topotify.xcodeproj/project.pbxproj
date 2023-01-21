@@ -31,7 +31,6 @@
 		19105255296093BB00743A18 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19105254296093BB00743A18 /* UIViewController+Extensions.swift */; };
 		1910526B2960BF9E00743A18 /* XCDYouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1910526A2960BF9E00743A18 /* XCDYouTubeKit */; };
 		1910526D2960C26300743A18 /* AVPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1910526C2960C26300743A18 /* AVPlayerView.swift */; };
-		1910526F2960C97300743A18 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1910526E2960C97300743A18 /* VideoView.swift */; };
 		191E3A89294DF39A004E57DD /* ChooseMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A88294DF39A004E57DD /* ChooseMusicView.swift */; };
 		191E3A8C294E075A004E57DD /* ColorNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A8B294E075A004E57DD /* ColorNames.swift */; };
 		191E3A8F294E59AE004E57DD /* SelectSpotifyMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191E3A8E294E59AE004E57DD /* SelectSpotifyMusicView.swift */; };
@@ -84,7 +83,6 @@
 		19105252296072ED00743A18 /* YoutubeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeManager.swift; sourceTree = "<group>"; };
 		19105254296093BB00743A18 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		1910526C2960C26300743A18 /* AVPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerView.swift; sourceTree = "<group>"; };
-		1910526E2960C97300743A18 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		191E3A88294DF39A004E57DD /* ChooseMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMusicView.swift; sourceTree = "<group>"; };
 		191E3A8B294E075A004E57DD /* ColorNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorNames.swift; sourceTree = "<group>"; };
 		191E3A8E294E59AE004E57DD /* SelectSpotifyMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSpotifyMusicView.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				19024844295230800038ED18 /* GradientButton.swift */,
 				19890F1B29525BA000B1D8F1 /* AddTrackListButton.swift */,
 				1910526C2960C26300743A18 /* AVPlayerView.swift */,
-				1910526E2960C97300743A18 /* VideoView.swift */,
 				191E3A90294F3BDA004E57DD /* HelpView.swift */,
 				193FD8D8297BE4C400106001 /* SearchBarView.swift */,
 			);
@@ -412,7 +409,6 @@
 				193FD8D9297BE4C400106001 /* SearchBarView.swift in Sources */,
 				191E3A8F294E59AE004E57DD /* SelectSpotifyMusicView.swift in Sources */,
 				190248322950C5150038ED18 /* ArtistView.swift in Sources */,
-				1910526F2960C97300743A18 /* VideoView.swift in Sources */,
 				19024845295230800038ED18 /* GradientButton.swift in Sources */,
 				19EF7AF6288BC28E009D0887 /* TopSongsView.swift in Sources */,
 				19105251296071EB00743A18 /* YoutubeModel.swift in Sources */,
