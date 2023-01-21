@@ -12,6 +12,7 @@ class TrackItem: Object, Identifiable {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var trackId: String
     @Persisted var name: String
+    @Persisted var videoId: String?
     @Persisted var url: String
     @Persisted var author: String
     @Persisted var video: Data?
