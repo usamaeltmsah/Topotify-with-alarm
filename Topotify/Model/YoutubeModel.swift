@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YoutubeModel {
+struct YoutubeModel: Codable {
     let items: [Item]?
 }
 
