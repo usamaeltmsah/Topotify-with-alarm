@@ -14,7 +14,8 @@ struct AlarmView: View {
     @State private var showChooseMusicView: Bool = false
     
     @State var isDismissedFromChooseMusicView: Bool
-    @State var trackName: String = ""
+    @State var trackItem: TrackItem = TrackItem()
+    @State var authorName: String = ""
     var hapticImpact = UIImpactFeedbackGenerator(style: .heavy)
     var body: some View {
         GeometryReader { geometry in
@@ -25,7 +26,11 @@ struct AlarmView: View {
                     .aspectRatio(geometry.size, contentMode: .fill)
                 
                 if isDismissedFromChooseMusicView {
-                    AlarmActivatedView(alarmScheduledAt: time,  trackName: trackName, isDismissedFromChooseMusicView: $isDismissedFromChooseMusicView)
+                    let hrs = Calendar.current.component(.hour, from: time)
+                    let mins = Calendar.current.component(.minute, from: time)
+                    if let newTime = Calendar.current.date(bySettingHour: hrs, minute: mins, second: 0, of: time) {
+                        AlarmActivatedView(alarmScheduledAt: newTime,  track: trackItem, isDismissedFromChooseMusicView: $isDismissedFromChooseMusicView)
+                    }
                 }
                 else {
                     VStack(alignment: .center) {
@@ -58,11 +63,12 @@ struct AlarmView: View {
                         } //: Label
                         .shadow(color: .white, radius: 35, x: 0, y: 0)
                         .sheet(isPresented: $showChooseMusicView) {
-                            ChooseMusicView(selectedTrackName: $trackName, dismissFromChooseMusicView: $isDismissedFromChooseMusicView, alarmTime: $time)
+                            ChooseMusicView(selectedTrack: $trackItem, dismissFromChooseMusicView: $isDismissedFromChooseMusicView, alarmTime: $time)
                         }
                         Spacer()
                         Spacer()
                     } //: VStack
+                    .showTabBar()
                     .foregroundColor(.white)
                     .offset(y: isSlidding ? 0 : 200)
                     .animation(.easeOut(duration: 0.5), value: isSlidding)
